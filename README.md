@@ -13,9 +13,9 @@
     pip install pipenv
     ```
 
-3. Install the dependencies:
+3. Install the dependencies from `requirements.txt`:
     ```sh
-    pipenv install
+    pipenv install -r requirements.txt
     ```
 
 4. Activate the virtual environment:
@@ -27,3 +27,15 @@
     ```sh
     python main.py
     ```
+
+## Requirements
+
+The required libraries are listed in the `requirements.txt` file:
+
+```plaintext
+sys
+csv
+pyilt2
+PyQt5
+
+
