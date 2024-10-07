@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLi
 class App(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Search and Save Results'
+        self.title = 'pyILT2 GUI'
         self.initUI()
         
     def initUI(self):
@@ -60,6 +60,20 @@ class App(QWidget):
             for i in range(len(results)):
                 result = results[i]
                 writer.writerow([str(result)])
+        
+        # Read the contents of the CSV file
+        with open('results.csv', mode='r') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+
+        # Use a set to track unique entries
+        unique_data = set(tuple(row) for row in data)
+
+        # Write only unique entries back to the CSV file
+        with open('results.csv', mode='w', newline='') as file:
+            writer = csv.writer(file)
+            for row in unique_data:
+                writer.writerow(row)
         
         with open('results.csv', mode='r') as file:
             reader = csv.reader(file)
